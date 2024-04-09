@@ -73,7 +73,7 @@ export default async function Profile() {
                   </Link>
                   <Link
                     // onClick={() => deletemenu(blog.id)}
-                    href={`/`}
+                    href={`/delete/${blog.id}`}
                     className="bg-red-500 text-white px-3 py-1 rounded-md text-sm font-medium"
                   >
                     ลบสูตร
