@@ -1,6 +1,7 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import Link from "next/link";
 import axios from "axios";
+
 const BaseUrl = "http://localhost:8000";
 const getmenu = async () => {
   const { user } = await getSession();
@@ -12,7 +13,15 @@ const getmenu = async () => {
     return [];
   }
 };
-
+const deletemenu = async (id) => {
+  try {
+    const res = await axios.delete(`${BaseUrl}/menu/${id}`);
+    res;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 export default async function Profile() {
   const { user } = await getSession();
   const blog = await getmenu();
@@ -63,7 +72,8 @@ export default async function Profile() {
                     เเก้ไขสูตร
                   </Link>
                   <Link
-                    href={`blog/${blog.id}`}
+                    // onClick={() => deletemenu(blog.id)}
+                    href={`/`}
                     className="bg-red-500 text-white px-3 py-1 rounded-md text-sm font-medium"
                   >
                     ลบสูตร

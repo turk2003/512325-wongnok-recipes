@@ -17,18 +17,28 @@ export default async function Page() {
   console.log(blog);
 
   return (
-    <div className="  ">
+    <div className="bg-gray ">
       <h1 className="p-5 text-center text-4xl ">สูตรอาหาร </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="flex justify-center">
+        <input
+          type="text"
+          placeholder="Search by menu..."
+          // value={searchQuery}
+          // onChange={handleSearch}
+          className="w-1/3 p-2 border rounded-md mb-4 mx-auto "
+        />
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 m-2 ">
         {blog.map((blog, index) => (
-          <div key={index} className="border rounded-lg p-4">
+          <div key={index} className="border-2 borded rounded-lg p-4 shadow-xl">
             <img
               className="h-40 w-full object-cover mb-4"
               src={blog.img}
               alt="Recipe Image"
             />
-            <div className="mb-2">Menu: {blog.menu}</div>
-            <div className="mb-4">Hard: {blog.hard}</div>
+            <div className="mb-2 text-2xl">เมนู : {blog.menu}</div>
+            <div className="mb-4">ระดับความยาก: {blog.hard}</div>
             <div className="flex justify-between">
               <Link
                 href={`blog/${blog.id}`}

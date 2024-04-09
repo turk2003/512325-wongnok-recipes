@@ -24,7 +24,7 @@ const Navbar = () => {
         <div className="flex items-center justify-around h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Link className="text-white font-bold" href="/">
+              <Link className="text-orange-400 font-bold" href="/">
                 Wongnok Recipes
               </Link>
             </div>
