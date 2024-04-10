@@ -13,15 +13,7 @@ const getmenu = async () => {
     return [];
   }
 };
-const deletemenu = async (id) => {
-  try {
-    const res = await axios.delete(`${BaseUrl}/menu/${id}`);
-    res;
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-};
+
 export default async function Profile() {
   const { user } = await getSession();
   const blog = await getmenu();
@@ -62,17 +54,16 @@ export default async function Profile() {
                   src={blog.img}
                   alt="Recipe Image"
                 />
-                <div className="mb-2">Menu: {blog.menu}</div>
-                <div className="mb-4">Hard: {blog.hard}</div>
+                <div className="mb-2 text-2xl">เมนู : {blog.menu}</div>
+                <div className="mb-4">ระดับความยาก: {blog.hard}</div>
                 <div className="flex justify-between">
                   <Link
-                    href={`blog/${blog.id}`}
+                    href={`edit/${blog.id}`}
                     className="bg-blue-500 text-white px-3 py-1 rounded-md text-sm font-medium"
                   >
                     เเก้ไขสูตร
                   </Link>
                   <Link
-                    // onClick={() => deletemenu(blog.id)}
                     href={`/delete/${blog.id}`}
                     className="bg-red-500 text-white px-3 py-1 rounded-md text-sm font-medium"
                   >

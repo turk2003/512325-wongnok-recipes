@@ -124,6 +124,43 @@ app.get("/menu/:id", async (req, res) => {
     });
   }
 });
+app.get("/menu2/:menu", async (req, res) => {
+  try {
+    let menu = req.params.menu;
+    const results = await conn.query(
+      "SELECT * FROM recipes WHERE menu = ?",
+      menu
+    );
+    if (results[0].length > 0) {
+      res.json(results[0][0]);
+    } else {
+      throw new Error("i dont know");
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({
+      message: "something wrong",
+      erroeMessage: error.message,
+    });
+  }
+});
+app.delete("/menu/:id", async (req, res) => {
+  try {
+    let id = req.params.id;
+    const results = await conn.query("DELETE from  recipes  WHERE id = ?", [
+      id,
+    ]);
+    res.json({
+      message: "delete complete",
+      data: results[0],
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({
+      message: "something wrong",
+    });
+  }
+});
 app.get("/auth/:username", async (req, res) => {
   let username = req.params.username;
   const results = await conn.query(
@@ -142,12 +179,31 @@ app.post("/menu", async (req, res) => {
       data: results[0],
     });
   } catch (error) {
-    const erroeMessage = error.message || "something wrong";
+    const erroeMessage = error.message || "someth ing wrong";
     const errors = error.errors;
     console.log(error.message);
     res.status(500).json({
       message: erroeMessage,
       errors: errors,
+    });
+  }
+});
+app.put("/menu/:id", async (req, res) => {
+  try {
+    let id = req.params.id;
+    let updatemanu = req.body;
+    const results = await conn.query("UPDATE  recipesz SET ? WHERE id = ?", [
+      updatemanu,
+      id,
+    ]);
+    res.json({
+      message: "update complete",
+      data: results[0],
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({
+      message: "something wrong",
     });
   }
 });
