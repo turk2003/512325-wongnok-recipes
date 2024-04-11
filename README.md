@@ -1,4 +1,3 @@
-![Screenshot 2024-04-10 173632](https://github.com/turk2003/512325-wongnok-recipes/assets/76483183/34f98b6c-ac2d-42db-90f6-09d37eabcf48)
 # Wongnok-recipes
 
 สวัสดีครับส่งครั้งเเรกครับ มีอีกหลายอย่างที่ต้องปรับเปลี่ยนเเละเเก้ไข จะมาเเก้ในภายหลังครับ
