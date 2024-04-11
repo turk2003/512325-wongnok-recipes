@@ -24,7 +24,7 @@ export default async function create(prevState, formData) {
     res;
   } catch (error) {
     console.log(error);
-    return { message: error.message || "Log in Fail" };
+    return { message: error.message || "Create Fail" };
   }
   redirect("/");
 }

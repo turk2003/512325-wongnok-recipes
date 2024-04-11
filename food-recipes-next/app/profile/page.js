@@ -36,7 +36,7 @@ export default async function Profile() {
               className="text-white bg-red-500 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium mr-2"
               href="/createblog"
             >
-              Create Blog
+              เพิ่มสูตร
             </a>
             <a
               className="text-red-500 hover:text-red-700 text-sm font-medium"

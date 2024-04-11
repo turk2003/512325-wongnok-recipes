@@ -31,7 +31,7 @@ export default async function update(formData) {
     res;
   } catch (error) {
     console.log(error);
-    return { message: error.message || "Log in Fail" };
+    return { message: error.message || "Edit Fail" };
   }
   redirect("/");
 }

@@ -19,6 +19,7 @@ export default function Page() {
               ชื่อเมนู
             </label>
             <input
+              placeholder="กรอกชื่อเมนู"
               type="text"
               id="name"
               name="name"
@@ -33,6 +34,7 @@ export default function Page() {
               รูปภาพ
             </label>
             <input
+              placeholder="กรอกที่อยู่รูปภาพ"
               type="text"
               id="email"
               name="img"
@@ -124,6 +126,7 @@ export default function Page() {
               วัตถุดิบ
             </label>
             <textarea
+              placeholder="กรอกวัตถุดิบ"
               id="message"
               name="ingredients"
               rows="3"
@@ -138,6 +141,7 @@ export default function Page() {
               วิธีทำ
             </label>
             <textarea
+              placeholder="กรอกวิธีทำ"
               id="message"
               name="step"
               rows="3"

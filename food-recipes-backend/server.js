@@ -74,32 +74,6 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-// Routes
-app.post("/login", passport.authenticate("local"), (req, res) => {
-  // If authentication succeeds, this function will be called
-  res.json({ message: "Login successful", user: req.user });
-});
-
-app.post("/register", async (req, res) => {
-  try {
-    const { username, password } = req.body;
-
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10); // 10 is the saltRounds
-
-    // Store the username and hashed password in the database
-    await conn.query("INSERT INTO users (username, password) VALUES (?, ?)", [
-      username,
-      hashedPassword,
-    ]);
-
-    res.json({ message: "Registration successful" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
-
 app.use(bodyParser.json());
 
 app.get("/menu", async (req, res) => {
