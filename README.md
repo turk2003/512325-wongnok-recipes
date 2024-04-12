@@ -7,7 +7,7 @@
 
 ![Screenshot 2024-04-10 173632](https://github.com/turk2003/512325-wongnok-recipes/assets/76483183/f1ff74a2-01d5-4760-afce-6d3aca82e067)
 
-## รายละเอียด
+## หน้ารายละเอียด
 ![Screenshot 2024-04-12 072107](https://github.com/turk2003/512325-wongnok-recipes/assets/76483183/693a015a-215f-45f5-8c9a-e6e3caf4c148)
 
 
