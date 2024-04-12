@@ -24,3 +24,5 @@
 
 **Server:** Node, Express
 
+**Database:** mysql
+
