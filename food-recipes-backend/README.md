@@ -1,3 +1,4 @@
-"# ทางด้านdatabase ผมใช้ xamppในการทำ" 
+ทางด้านdatabase ผมใช้ xamppในการทำ
 
-![Screenshot 2023-08-11 191758](https://github.com/turk2003/512325-wongnok-recipes/assets/76483183/f751b394-e673-4d07-9ade-587229f656c0)
+
+![Screenshot 2024-04-12 071130](https://github.com/turk2003/512325-wongnok-recipes/assets/76483183/18f64b3a-4dac-47e7-b40e-51f3c9cab4c7)
