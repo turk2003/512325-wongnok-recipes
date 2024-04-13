@@ -98,15 +98,17 @@ app.get("/menu/:id", async (req, res) => {
     });
   }
 });
-app.get("/menu2/:menu", async (req, res) => {
+
+app.get("/searhed/:menu", async (req, res) => {
   try {
-    let menu = req.params.menu;
+    let menu = "%" + req.params.menu + "%";
     const results = await conn.query(
-      "SELECT * FROM recipes WHERE menu = ?",
+      "SELECT * FROM recipes WHERE menu LIKE ?",
       menu
     );
+
     if (results[0].length > 0) {
-      res.json(results[0][0]);
+      res.json(results[0]);
     } else {
       throw new Error("i dont know");
     }

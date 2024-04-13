@@ -1,7 +1,6 @@
-// "use client";
 import axios from "axios";
 import Link from "next/link";
-import Search from "./search";
+import Search from "./component/search";
 const BaseUrl = "http://localhost:8000";
 const getmenu = async () => {
   try {
