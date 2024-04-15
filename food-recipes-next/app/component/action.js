@@ -17,6 +17,13 @@ export default async function comment(prevState, formData) {
       writer,
     });
     res;
+    const results = await axios.put(
+      `http://localhost:8000/comment/${blog_post_id}`,
+      {
+        sum_score: score,
+      }
+    );
+    results;
   } catch (error) {
     console.log(error);
     return { message: error.message || "Comment Fail" };

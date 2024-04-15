@@ -220,6 +220,31 @@ app.put("/menu/:id", async (req, res) => {
     });
   }
 });
+app.put("/comment/:id", async (req, res) => {
+  try {
+    let id = req.params.id;
+    let updatescore = req.body.sum_score;
+    updatescore = parseInt(updatescore);
+    const results = await conn.query(
+      "UPDATE recipe SET sum_score = sum_score + ? WHERE id = ?",
+      [updatescore, id]
+    );
+    const res = await conn.query(
+      "UPDATE recipe SET commenter = commenter + 1 WHERE id = ?",
+      id
+    );
+
+    res.json({
+      message: "update complete",
+      data: [results[0], res[0]],
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({
+      message: "something wrong",
+    });
+  }
+});
 // You can add more routes here...
 
 // Start the server

@@ -30,6 +30,11 @@ export default async function Page() {
             />
             <div className="mb-2 text-2xl">เมนู : {blog.menu}</div>
             <div className="mb-4">ระดับความยาก: {blog.hard}</div>
+            <div className="mb-4">
+              คะเเนน :{" "}
+              {blog.commenter !== 0 ? blog.sum_score / blog.commenter : 0} จาก{" "}
+              {blog.commenter} คน
+            </div>
             <div className="flex justify-between">
               <Link
                 href={`blog/${blog.id}`}
