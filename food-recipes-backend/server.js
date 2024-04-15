@@ -15,7 +15,7 @@ const initMySQL = async () => {
     conn = await mysql.createConnection({
       host: "localhost",
       user: "root",
-      password: "your_password",
+      password: "",
       database: "food_recipes",
       port: 3306,
     });
@@ -77,14 +77,53 @@ passport.deserializeUser(async (id, done) => {
 app.use(bodyParser.json());
 
 app.get("/menu", async (req, res) => {
-  const results = await conn.query("SELECT * FROM recipes");
+  const results = await conn.query("SELECT * FROM recipe");
 
   res.json(results[0]);
+});
+app.get("/comments/:id", async (req, res) => {
+  try {
+    let id = req.params.id;
+    const results = await conn.query(
+      "SELECT * FROM comments WHERE blog_post_id = ?",
+      id
+    );
+    if (results[0].length > 0) {
+      res.json(results[0]);
+    } else {
+      throw new Error("i dont know");
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({
+      message: "something wrong",
+      erroeMessage: error.message,
+    });
+  }
+});
+app.post("/comments", async (req, res) => {
+  try {
+    let comment = req.body;
+
+    const results = await conn.query("INSERT INTO comments SET ?", comment);
+    res.json({
+      message: "insert complete",
+      data: results[0],
+    });
+  } catch (error) {
+    const erroeMessage = error.message || "someth ing wrong";
+    const errors = error.errors;
+    console.log(error.message);
+    res.status(500).json({
+      message: erroeMessage,
+      errors: errors,
+    });
+  }
 });
 app.get("/menu/:id", async (req, res) => {
   try {
     let id = req.params.id;
-    const results = await conn.query("SELECT * FROM recipes WHERE id = ?", id);
+    const results = await conn.query("SELECT * FROM recipe WHERE id = ?", id);
     if (results[0].length > 0) {
       res.json(results[0][0]);
     } else {
@@ -103,7 +142,7 @@ app.get("/searhed/:menu", async (req, res) => {
   try {
     let menu = "%" + req.params.menu + "%";
     const results = await conn.query(
-      "SELECT * FROM recipes WHERE menu LIKE ?",
+      "SELECT * FROM recipe WHERE menu LIKE ?",
       menu
     );
 
@@ -123,9 +162,7 @@ app.get("/searhed/:menu", async (req, res) => {
 app.delete("/menu/:id", async (req, res) => {
   try {
     let id = req.params.id;
-    const results = await conn.query("DELETE from  recipes  WHERE id = ?", [
-      id,
-    ]);
+    const results = await conn.query("DELETE from  recipe  WHERE id = ?", [id]);
     res.json({
       message: "delete complete",
       data: results[0],
@@ -140,7 +177,7 @@ app.delete("/menu/:id", async (req, res) => {
 app.get("/auth/:username", async (req, res) => {
   let username = req.params.username;
   const results = await conn.query(
-    "SELECT * FROM recipes WHERE writer = ?",
+    "SELECT * FROM recipe WHERE writer = ?",
     username
   );
   res.json(results[0]);
@@ -149,7 +186,7 @@ app.post("/menu", async (req, res) => {
   try {
     let user = req.body;
 
-    const results = await conn.query("INSERT INTO recipes SET ?", user);
+    const results = await conn.query("INSERT INTO recipe SET ?", user);
     res.json({
       message: "insert complete",
       data: results[0],
@@ -168,7 +205,7 @@ app.put("/menu/:id", async (req, res) => {
   try {
     let id = req.params.id;
     let updatemanu = req.body;
-    const results = await conn.query("UPDATE  recipesz SET ? WHERE id = ?", [
+    const results = await conn.query("UPDATE  recipe SET ? WHERE id = ?", [
       updatemanu,
       id,
     ]);
