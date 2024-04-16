@@ -55,7 +55,14 @@ export default async function Profile() {
                   alt="Recipe Image"
                 />
                 <div className="mb-2 text-2xl">เมนู : {blog.menu}</div>
-                <div className="mb-4">ระดับความยาก: {blog.hard}</div>
+                <div className="mb-2">ระดับความยาก: {blog.hard}</div>
+                <div className="mb-2">
+                  คะเเนน :{" "}
+                  {blog.commenter !== 0
+                    ? (blog.sum_score / blog.commenter).toFixed(2)
+                    : 0}{" "}
+                  จาก {blog.commenter} คน
+                </div>
                 <div className="flex justify-between">
                   <Link
                     href={`edit/${blog.id}`}

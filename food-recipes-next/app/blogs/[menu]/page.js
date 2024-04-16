@@ -29,7 +29,13 @@ export default async function Page({ params }) {
               alt="Recipe Image"
             />
             <div className="mb-2 text-2xl">เมนู : {blog.menu}</div>
-            <div className="mb-4">ระดับความยาก: {blog.hard}</div>
+            <div className="mb-2">ระดับความยาก: {blog.hard}</div>
+            <div className="mb-2">
+              {blog.commenter !== 0
+                ? (blog.sum_score / blog.commenter).toFixed(1)
+                : 0}{" "}
+              ⭐ จาก {blog.commenter} คน
+            </div>
             <div className="flex justify-between">
               <Link
                 href={`blog/${blog.id}`}

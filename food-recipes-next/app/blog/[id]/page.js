@@ -58,7 +58,7 @@ export default async function Page({ params }) {
               {comment.writer}
             </p>
             <p className="text-black font-semibold text-sm">
-              คะเเนน :{comment.score}
+              {comment.score} ⭐
             </p>
             <p className="text-gray-800 text-sm">{comment.comment_content}</p>
           </div>

@@ -29,11 +29,12 @@ export default async function Page() {
               alt="Recipe Image"
             />
             <div className="mb-2 text-2xl">เมนู : {blog.menu}</div>
-            <div className="mb-4">ระดับความยาก: {blog.hard}</div>
-            <div className="mb-4">
-              คะเเนน :{" "}
-              {blog.commenter !== 0 ? blog.sum_score / blog.commenter : 0} จาก{" "}
-              {blog.commenter} คน
+            <div className="mb-2">ระดับความยาก: {blog.hard}</div>
+            <div className="mb-2">
+              {blog.commenter !== 0
+                ? (blog.sum_score / blog.commenter).toFixed(1)
+                : 0}{" "}
+              ⭐ จาก {blog.commenter} คน
             </div>
             <div className="flex justify-between">
               <Link
