@@ -57,11 +57,10 @@ export default async function Profile() {
                 <div className="mb-2 text-2xl">เมนู : {blog.menu}</div>
                 <div className="mb-2">ระดับความยาก: {blog.hard}</div>
                 <div className="mb-2">
-                  คะเเนน :{" "}
                   {blog.commenter !== 0
-                    ? (blog.sum_score / blog.commenter).toFixed(2)
+                    ? (blog.sum_score / blog.commenter).toFixed(1)
                     : 0}{" "}
-                  จาก {blog.commenter} คน
+                  ⭐ จาก {blog.commenter} คน
                 </div>
                 <div className="flex justify-between">
                   <Link
