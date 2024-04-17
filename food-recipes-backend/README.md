@@ -1,4 +1,4 @@
-# ทางด้านdatabase ผมใช้ xamppในการทำ
+# ทางด้านdatabase ผมใช้ xamppในการทำครับ
 
 ##  Table recipe
 
